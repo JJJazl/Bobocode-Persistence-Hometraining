@@ -62,7 +62,15 @@ public class PooledDataSource extends DriverDataSource {
                 s.close();
             }
             openStatements.clear();
+
+            setConnectionDefaultValues();
             connectionPool.add(this);
+        }
+
+        private void setConnectionDefaultValues() throws SQLException {
+            this.physicalConnection.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
+            this.physicalConnection.setAutoCommit(true);
+            this.physicalConnection.setReadOnly(false);
         }
 
         @Override
