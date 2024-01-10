@@ -1,5 +1,6 @@
 package com.example.persistencehomework.HW22.entity;
 
+import com.example.persistencehomework.HW22.annotation.Column;
 import com.example.persistencehomework.HW22.annotation.Id;
 import com.example.persistencehomework.HW22.annotation.Table;
 import lombok.Data;
@@ -11,9 +12,11 @@ public class User {
     @Id
     private Long id;
 
-    private String email;
+    @Column(name = "first_name")
+    private String firstName;
 
-    private String username;
+    @Column(name = "last_name")
+    private String lastName;
 
     private int money;
 }
